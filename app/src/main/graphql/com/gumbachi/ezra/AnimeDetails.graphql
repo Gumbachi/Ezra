@@ -1,0 +1,42 @@
+query AnimeDetails($id: Int!) {
+    media: Media(id: $id) {
+        id
+        season
+        seasonYear
+        status
+        episodes
+        duration
+        averageScore
+        title {
+            romaji
+            english
+            native
+        }
+        coverImage {
+            large
+        }
+        description
+        characters(sort: FAVOURITES_DESC) {
+            edges {
+                node {
+                    image {
+                        medium
+                    }
+                    name {
+                        full
+                    }
+                }
+                voiceActorRoles(language: JAPANESE) {
+                    voiceActor {
+                        image {
+                            medium
+                        }
+                        name {
+                            full
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
