@@ -2,10 +2,7 @@ package com.gumbachi.ezra.repository
 
 import androidx.compose.runtime.mutableStateListOf
 import com.gumbachi.ezra.TMDB_KEY
-import com.gumbachi.ezra.data.dummy.DummyData
 import com.gumbachi.ezra.data.remote.TmdbApi
-import com.gumbachi.ezra.data.remote.responses.movie.MovieCredits
-import com.gumbachi.ezra.data.remote.responses.movie.MovieDetails
 import com.gumbachi.ezra.data.remote.responses.tv.TVCredits
 import com.gumbachi.ezra.data.remote.responses.tv.TVDetails
 import com.gumbachi.ezra.data.remote.responses.tv.TVSearchResult

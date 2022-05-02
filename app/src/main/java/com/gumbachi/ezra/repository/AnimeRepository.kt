@@ -1,11 +1,9 @@
 package com.gumbachi.ezra.repository
 
 import androidx.compose.runtime.mutableStateListOf
-import com.apollographql.apollo3.api.Optional
 import com.apollographql.apollo3.exception.ApolloException
 import com.gumbachi.ezra.AnimeDetailsQuery
 import com.gumbachi.ezra.SearchAnimeQuery
-import com.gumbachi.ezra.data.dummy.DummyData
 import com.gumbachi.ezra.data.remote.AniListAPI
 import com.gumbachi.ezra.model.Anime
 import com.gumbachi.ezra.model.WatchStatus

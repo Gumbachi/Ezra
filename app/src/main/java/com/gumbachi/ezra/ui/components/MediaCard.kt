@@ -23,13 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.gumbachi.ezra.R
-import com.gumbachi.ezra.data.dummy.DummyData
-import com.gumbachi.ezra.model.Media
-import com.gumbachi.ezra.model.Movie
 import com.gumbachi.ezra.ui.theme.EzraTheme
-import com.gumbachi.ezra.model.Anime
-import com.gumbachi.ezra.model.Show
-import com.gumbachi.ezra.utils.getCompleteTMDBPath
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable

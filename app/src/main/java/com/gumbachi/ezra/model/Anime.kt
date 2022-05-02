@@ -2,6 +2,7 @@ package com.gumbachi.ezra.model
 
 import com.gumbachi.ezra.AnimeDetailsQuery
 import com.gumbachi.ezra.SearchAnimeQuery
+import kotlin.random.Random
 
 data class Anime(
     override val id: Int,
@@ -10,8 +11,11 @@ data class Anime(
     override var score: Double,
     override var status: WatchStatus,
     override var episodesWatched: Int,
-    override val episodes: Int,
-    val releaseDate: String
+    override val totalEpisodes: Int,
+    val releaseDate: String,
+    override var startDate: String? = null,
+    override var finishDate: String? = null,
+    override var notes: String = "",
 ) : Media {
 
 
@@ -24,9 +28,26 @@ data class Anime(
                 score = ((searchResult.averageScore ?: 0) / 10).toDouble(),
                 status = WatchStatus.PLANNING,
                 episodesWatched = 0,
-                episodes = searchResult.episodes ?: 1,
+                totalEpisodes = searchResult.episodes ?: 1,
                 releaseDate = "${details?.season}, ${details?.seasonYear}"
             )
+        }
+
+        fun getDummy(): Anime {
+            return Anime(
+                id = Random.nextInt(),
+                title = "Title Goes Here",
+                imageURL = "",
+                score = Random.nextDouble(10.1),
+                status = WatchStatus.values().random(),
+                releaseDate = "${Random.nextInt(1, 13)}/${Random.nextInt(1, 29)}/${Random.nextInt(1945, 2030)}",
+                episodesWatched = Random.nextInt(500),
+                totalEpisodes = Random.nextInt(500, 1000)
+            )
+        }
+
+        fun getDummies(count: Int): List<Anime> {
+            return List(count) { getDummy() }
         }
     }
 }

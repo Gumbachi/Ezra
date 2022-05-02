@@ -111,4 +111,8 @@ object MovieRepository {
         return null
     }
 
+    init {
+        movies.addAll(Movie.getDummies(40))
+    }
+
 }

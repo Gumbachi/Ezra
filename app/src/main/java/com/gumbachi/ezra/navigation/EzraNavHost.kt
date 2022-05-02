@@ -1,6 +1,5 @@
 package com.gumbachi.ezra.navigation
 
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -12,6 +11,7 @@ import com.gumbachi.ezra.repository.EditRepository
 import com.gumbachi.ezra.model.TopBarType
 import com.gumbachi.ezra.model.WatchStatus
 import com.gumbachi.ezra.ui.screens.*
+import com.gumbachi.ezra.ui.screens.edit.EditScreen
 import kotlinx.coroutines.CoroutineScope
 
 sealed class Screen(val route: String) {

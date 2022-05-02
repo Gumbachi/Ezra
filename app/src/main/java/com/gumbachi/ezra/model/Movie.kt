@@ -4,20 +4,21 @@ import com.gumbachi.ezra.data.remote.responses.movie.MovieDetails
 import com.gumbachi.ezra.data.remote.responses.movie.MovieSearchResult
 import com.gumbachi.ezra.utils.convertMinutesToRuntime
 import com.gumbachi.ezra.utils.getCompleteTMDBPath
+import kotlin.random.Random
 
 data class Movie(
     override val id: Int,
     override val title: String,
-    val releaseDate: String,
-    val runtime: String,
     override val imageURL: String,
     override var score: Double,
     override var status: WatchStatus,
+    val releaseDate: String,
+    val runtime: String,
     override var episodesWatched: Int = 0,
-    val budget: Int = 0,
-    val revenue: Int = 0,
-    val popularity: Double = 0.0,
-    val releaseStatus: String = "Released"
+    override val totalEpisodes: Int = 0,
+    override var startDate: String? = null,
+    override var finishDate: String? = null,
+    override var notes: String = "",
 ) : Media {
 
     companion object {
@@ -26,17 +27,30 @@ data class Movie(
                 return Movie(
                     id = id,
                     title = title,
-                    releaseDate = release_date,
-                    runtime = convertMinutesToRuntime(details?.runtime),
                     imageURL = getCompleteTMDBPath(poster_path),
                     score = vote_average,
                     status = WatchStatus.PLANNING,
-                    budget = details?.budget ?: 0,
-                    revenue = details?.revenue ?: 0,
-                    popularity = details?.popularity ?: 0.0,
-                    releaseStatus = details?.status ?: "Released"
+                    releaseDate = release_date,
+                    runtime = convertMinutesToRuntime(details?.runtime),
                 )
             }
         }
+
+        fun getDummy(): Movie {
+            return Movie(
+                id = Random.nextInt(),
+                title = "Movie Title",
+                imageURL = "",
+                score = Random.nextDouble(10.1),
+                status = WatchStatus.values().random(),
+                releaseDate = "${Random.nextInt(1, 13)}/${Random.nextInt(1, 29)}/${Random.nextInt(1945, 2030)}",
+                runtime = "${Random.nextInt(0, 4)}hr ${Random.nextInt(0, 60)}m",
+            )
+        }
+
+        fun getDummies(count: Int): List<Movie> {
+            return List(count) { getDummy() }
+        }
+
     }
 }

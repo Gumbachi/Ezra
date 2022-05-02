@@ -3,4 +3,5 @@
 
     <style name="Theme.Ezra" parent="android:Theme.Material.Light.NoActionBar">
     </style>
+
 </resources>

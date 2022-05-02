@@ -9,14 +9,12 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.gumbachi.ezra.SearchAnimeQuery
-import com.gumbachi.ezra.data.dummy.DummyData
 import com.gumbachi.ezra.data.remote.responses.tv.TVSearchResult
 import com.gumbachi.ezra.data.remote.responses.movie.MovieSearchResult
 import com.gumbachi.ezra.model.Anime
@@ -187,7 +185,7 @@ fun TVList(
                 secondarySubtitle = "${item.numSeasons} ${if (item.numSeasons == 1) "Season" else "Seasons"}",
                 score = item.score,
                 episodesWatched = item.episodesWatched,
-                totalEpisodes = item.episodes,
+                totalEpisodes = item.totalEpisodes,
                 onClick = {
                     navController.navigate("details/TV/${item.id}")
                 },
@@ -214,10 +212,10 @@ fun AnimeList(
                 imageURL = item.imageURL,
                 title = item.title,
                 primarySubtitle = item.releaseDate,
-                secondarySubtitle = "${item.episodes} Episodes",
+                secondarySubtitle = "${item.totalEpisodes} Episodes",
                 score = item.score,
                 episodesWatched = item.episodesWatched,
-                totalEpisodes = item.episodes,
+                totalEpisodes = item.totalEpisodes,
                 onClick = {
                     navController.navigate("details/ANIME/${item.id}")
                 },
@@ -238,7 +236,7 @@ fun PreviewMediaList() {
         Surface {
             TVList(
                 navController = rememberNavController(),
-                list = DummyData.shows
+                list = Show.getDummies(5)
             )
         }
     }
